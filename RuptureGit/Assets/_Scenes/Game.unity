@@ -3173,6 +3173,7 @@ GameObject:
   - 64: {fileID: 1721393617}
   - 23: {fileID: 1721393616}
   - 114: {fileID: 1721393620}
+  - 65: {fileID: 1721393621}
   m_Layer: 8
   m_Name: Office1
   m_TagString: Untagged
@@ -3264,6 +3265,18 @@ MonoBehaviour:
   hasAddedMembers: 0
   outgoingNetworkLines: []
   outgoingNetworkFlows: []
+--- !u!65 &1721393621
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1721393615}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1766528538
 GameObject:
   m_ObjectHideFlags: 0
