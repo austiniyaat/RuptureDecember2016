@@ -23,7 +23,6 @@ public class CorruptionBehavior : MonoBehaviour {
 
 	void Update(){
 		
-
 		//MakeCorrupt
 		if ((Input.GetKeyDown (KeyCode.Space) || (player.allNodes.Count > 20 && Time.time > 90)) && corruptionStarted == false) {
 			int randomIndex = Random.Range (0, player.allNodes.Count);
@@ -54,7 +53,7 @@ public class CorruptionBehavior : MonoBehaviour {
 				}
 			}
 
-			smallCycle = Time.time + 45f;
+		 	smallCycle = Time.time + 45f;
 			corruptNodes.Clear ();
 
 		}
@@ -90,7 +89,7 @@ public class CorruptionBehavior : MonoBehaviour {
 				}
 			}
 											
-			bigCycle = Time.time + 150;
+			bigCycle = Time.time + 175;
 		}
 	}
 

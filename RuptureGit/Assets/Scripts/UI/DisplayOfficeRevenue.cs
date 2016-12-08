@@ -49,13 +49,13 @@ public class DisplayOfficeRevenue : MonoBehaviour {
 			if (screenPos.x < 800) {
 				temp.x += 200f;
 			} else if (screenPos.x > 800) {
-				temp.x -= 150;
+				temp.x -= 200;
 			}
 
 			if (screenPos.y < 120) {
-				temp.y += 120f;
+				temp.y += 160f;
 			} else if (screenPos.y > 300) {
-				temp.y -= 120f;
+				temp.y -= 160f;
 			}
 
 			productionDisplay.transform.position = temp;

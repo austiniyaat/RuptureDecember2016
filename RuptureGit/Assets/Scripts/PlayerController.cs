@@ -54,12 +54,14 @@ public class PlayerController : MonoBehaviour {
 	public int currentFunds;
 	UIManager uiManager;
 
-
 	void Start () {
 		rb = GetComponent<Rigidbody>();
 		uiManager = GetComponent<UIManager>();
 		currentFunds = startingFunds;
 		rentTimer = 60;
+
+
+
 //		InvokeRepeating("PayTheRent", 90, 90);
 	}
 	
@@ -207,17 +209,27 @@ public class PlayerController : MonoBehaviour {
 				}
 			}
 
+			bool pathToOrigin = false;
+
+			if (currentOffice == allOffices[0]){
+				pathToOrigin = true;
+			}
+
+			foreach (Office office in currentOffice.GetComponent<Office>().aggregateOfficeList) {
+				if (office.gameObject == allOffices [0]) {
+					pathToOrigin = true;
+				}
+			}
+				
+			if (pathToOrigin == false) {
+				currentOfficeSelected = false;
+				currentOffice.GetComponent<MeshRenderer>().material.color = connectionColor;
+				playerState = State.Start;
+				uiManager.CloseModeTab ();
+			}
+
 			if(currentOfficeSelected == true && hit.collider.gameObject != currentOffice){
 				officeToConnect = hit.collider.gameObject;
-
-
-//				for (int i = 0; i < officeToConnect.GetComponent<Office>().aggregateOfficeList.Count; i++) {
-//					
-//					if (currentOffice.GetComponent<Office>().aggregateOfficeList[i].gameObject == officeToConnect){
-//						cycle = true;
-//						Debug.Log ("Cycle is true");
-//					}
-//				}
 
 				foreach (Office previousOffice in currentOffice.GetComponent<Office>().aggregateOfficeList) {
 					if (previousOffice == officeToConnect.GetComponent<Office> ()) {
@@ -227,11 +239,13 @@ public class PlayerController : MonoBehaviour {
 						if (cycle) {
 							currentOfficeSelected = false;
 							currentOffice.GetComponent<MeshRenderer>().material.color = connectionColor;
+							playerState = State.Start;
 						}
 					}
 				}
+					
 
-				if (officeToConnect.GetComponent<Office>().officeMembers.Any() && cycle == false){
+				if (officeToConnect.GetComponent<Office>().officeMembers.Any() && cycle == false && pathToOrigin == true){
 
 					officeToConnect.GetComponent<MeshRenderer>().material.color = connectionColor;
 					currentOffice.GetComponent<MeshRenderer>().material.color = connectionColor;
