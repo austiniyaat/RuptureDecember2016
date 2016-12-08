@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		//Camera Movement
-		Vector3 moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0 , Input.GetAxisRaw("Vertical")).normalized;
+		Vector3 moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical") , 0).normalized;
 		targetMoveAmount = moveDir * moveSpeed;
 		moveAmount = Vector3.SmoothDamp(moveAmount, targetMoveAmount, ref smoothDampMoveRef, 0.05f);
 
@@ -128,10 +128,10 @@ public class PlayerController : MonoBehaviour {
 //			Vector3 position4 = new Vector3 (Vector3.back * 1 + Vector3.up * 0.125f);
 
 			//creates four small spheres that check to see if the places Bureaucrats might be placed in are occupied
-			hitColliders1 = Physics.OverlapSphere ((office.transform.position + Vector3.forward * 1 + Vector3.up * 0.125f), 0.1f, nodeLayer);
-			hitColliders2 = Physics.OverlapSphere ((office.transform.position + Vector3.left * 1 + Vector3.up * 0.125f), 0.1f, nodeLayer);
-			hitColliders3 = Physics.OverlapSphere ((office.transform.position + Vector3.right * 1 + Vector3.up * 0.125f), 0.1f, nodeLayer);
-			hitColliders4 = Physics.OverlapSphere ((office.transform.position + Vector3.back * 1 + Vector3.up * 0.125f), 0.1f, nodeLayer);
+			hitColliders1 = Physics.OverlapSphere ((office.transform.position + Vector3.forward * 1.2f + Vector3.up * 0.125f), 0.1f, nodeLayer);
+			hitColliders2 = Physics.OverlapSphere ((office.transform.position + Vector3.left * 1.2f+ Vector3.up * 0.125f), 0.1f, nodeLayer);
+			hitColliders3 = Physics.OverlapSphere ((office.transform.position + Vector3.right * 1.2f + Vector3.up * 0.125f), 0.1f, nodeLayer);
+			hitColliders4 = Physics.OverlapSphere ((office.transform.position + Vector3.back * 1.2f + Vector3.up * 0.125f), 0.1f, nodeLayer);
 
 
 			if (office.officeCount < maxPerOffice){
@@ -155,19 +155,19 @@ public class PlayerController : MonoBehaviour {
 
 
 				if (hitColliders1.Length == 0) {
-					currentBureaucrat.transform.position = office.transform.position + Vector3.forward * 1 + Vector3.up * 0.125f;
+					currentBureaucrat.transform.position = office.transform.position + Vector3.forward * 1.2f + Vector3.up * 0.125f;
 //					currentBureaucrat.GetComponent<Node>().selfIndex = 0;
 
 				} else if (hitColliders2.Length == 0) {
-					currentBureaucrat.transform.position = office.transform.position + Vector3.left * 1 + Vector3.up * 0.125f;
+					currentBureaucrat.transform.position = office.transform.position + Vector3.left * 1.2f + Vector3.up * 0.125f;
 //					currentBureaucrat.GetComponent<Node>().selfIndex = 1;
 
 				} else if (hitColliders3.Length == 0) {
-					currentBureaucrat.transform.position = office.transform.position + Vector3.right * 1 + Vector3.up * 0.125f;
+					currentBureaucrat.transform.position = office.transform.position + Vector3.right * 1.2f + Vector3.up * 0.125f;
 //					currentBureaucrat.GetComponent<Node>().selfIndex = 2;
 
 				} else if (hitColliders4.Length == 0) {
-					currentBureaucrat.transform.position = office.transform.position + Vector3.back * 1 + Vector3.up * 0.125f;
+					currentBureaucrat.transform.position = office.transform.position + Vector3.back * 1.2f + Vector3.up * 0.125f;
 //					currentBureaucrat.GetComponent<Node>().selfIndex = 3;
 
 				} 
