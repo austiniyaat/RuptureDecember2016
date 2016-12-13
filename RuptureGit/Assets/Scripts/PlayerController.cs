@@ -52,6 +52,10 @@ public class PlayerController : MonoBehaviour {
 	public float rentTimer;
 	public int startingFunds = 100000;
 
+	[Header("Audio")]
+	AudioSource audiosource;
+	public AudioClip networkAudio;
+
 	[HideInInspector]
 	public int currentFunds;
 	UIManager uiManager;
@@ -61,7 +65,7 @@ public class PlayerController : MonoBehaviour {
 		uiManager = GetComponent<UIManager>();
 		currentFunds = startingFunds;
 		rentTimer = 60;
-
+		audiosource = GetComponent<AudioSource> ();
 
 
 //		InvokeRepeating("PayTheRent", 90, 90);
@@ -102,6 +106,7 @@ public class PlayerController : MonoBehaviour {
 				Hire();
 			}  else if (playerState == State.Network && currentFunds > networkCost){
 				MakeNetworkConnection();
+				audiosource.PlayOneShot (networkAudio, 1);
 			}
 		}
 	}
