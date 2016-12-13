@@ -53,8 +53,9 @@ public class PlayerController : MonoBehaviour {
 	public int startingFunds = 100000;
 
 	[Header("Audio")]
-	AudioSource audiosource;
 	public AudioClip networkAudio;
+	public AudioClip networkAudio2;
+	AudioSource audiosource;
 
 	[HideInInspector]
 	public int currentFunds;
@@ -106,7 +107,6 @@ public class PlayerController : MonoBehaviour {
 				Hire();
 			}  else if (playerState == State.Network && currentFunds > networkCost){
 				MakeNetworkConnection();
-				audiosource.PlayOneShot (networkAudio, 1);
 			}
 		}
 	}
@@ -213,6 +213,8 @@ public class PlayerController : MonoBehaviour {
 				if (currentOffice.GetComponent<Office>().officeMembers.Any()){
 					currentOffice.GetComponent<MeshRenderer>().material.color = highlightColor;
 					currentOfficeSelected = true;
+					audiosource.PlayOneShot (networkAudio, 1);
+
 				}
 			}
 
@@ -276,6 +278,7 @@ public class PlayerController : MonoBehaviour {
 					officeToConnect.GetComponent<Office> ().aggregateOfficeList.AddRange(currentOffice.GetComponent<Office>().aggregateOfficeList);
 
 					currentFunds -= networkCost;
+					audiosource.PlayOneShot (networkAudio2, 1);
 
 					foreach(GameObject node in allNodes){
 						node.GetComponent<Node>().UpdateWitnessableNodes();

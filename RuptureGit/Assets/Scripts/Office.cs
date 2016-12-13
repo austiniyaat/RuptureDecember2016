@@ -20,7 +20,10 @@ public class Office : MonoBehaviour {
 	public List<GameObject> outgoingNetworkLines;
 	public List<GameObject> outgoingNetworkFlows;
 
+	public AudioClip building;
+
 	PlayerController player;
+
 
 
 	void Start(){
