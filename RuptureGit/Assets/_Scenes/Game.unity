@@ -1390,7 +1390,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 49ca679eb423e4fb582e45e698eac490, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2057e7b0c252041d0a248be75b0ec63e, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -4265,6 +4265,7 @@ MonoBehaviour:
   rentTimer: 0
   startingFunds: 100000
   networkAudio: {fileID: 8300000, guid: 6fa97383429f04a1998923b8c70866fa, type: 3}
+  networkAudio2: {fileID: 8300000, guid: 269744092ccdc4ab88ebe6e039c8aa4f, type: 3}
   currentFunds: 0
 --- !u!54 &1686774411
 Rigidbody:
@@ -4320,6 +4321,7 @@ MonoBehaviour:
   gameModeObject: {fileID: 1500833951}
   gameModeText: {fileID: 1074754660}
   payTimeText: {fileID: 0}
+  investigateMode: {fileID: 8300000, guid: 18a3d60e764384686b19e96ac7a562a6, type: 3}
   officeLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -4556,6 +4558,7 @@ MonoBehaviour:
   hasAddedMembers: 0
   outgoingNetworkLines: []
   outgoingNetworkFlows: []
+  building: {fileID: 0}
 --- !u!65 &1721393621
 BoxCollider:
   m_ObjectHideFlags: 0
