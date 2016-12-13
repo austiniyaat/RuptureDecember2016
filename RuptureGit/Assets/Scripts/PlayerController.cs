@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour {
 
 	public List<GameObject> allNodes;
 	public List<GameObject> allOffices;
+	public List<GameObject> allNetworkTies;
+
 	public enum State{Start, Hiring, Network, Office, Cursory, Thorough};
 	public State playerState;
 
