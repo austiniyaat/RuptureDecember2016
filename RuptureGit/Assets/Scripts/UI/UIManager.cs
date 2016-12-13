@@ -77,7 +77,7 @@ public class UIManager : MonoBehaviour {
 
 		parentOffice.outgoingNetworkLines.Add (myLine);
 		parentOffice.outgoingNetworkFlows.Add (flowAnimation);
-
+		player.allNetworkTies.Add (myLine);
 	}
 
 	float GetDistance (Vector3 start, Vector3 end){

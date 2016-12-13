@@ -128,6 +128,10 @@ public class Node : MonoBehaviour{
 				}
 			}
 
+			if (this.transform.parent.gameObject == player.allOffices [0]) {
+				pathToOrigin = true;
+			} 
+
 			if (pathToOrigin) {
 				if (nodeState == NodeState.Corrupt) {
 					//corrupt nodes take a cut of their production before paying the player

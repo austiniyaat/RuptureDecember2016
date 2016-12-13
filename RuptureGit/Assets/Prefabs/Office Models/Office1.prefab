@@ -22,7 +22,7 @@ GameObject:
   - 33: {fileID: 33000013889177264}
   - 23: {fileID: 23000010315349460}
   m_Layer: 8
-  m_Name: OFFICE1
+  m_Name: Office1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
