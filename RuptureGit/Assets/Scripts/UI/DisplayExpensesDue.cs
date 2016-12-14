@@ -35,7 +35,7 @@ public class DisplayExpensesDue : MonoBehaviour {
 		
 		rentText.text = "Rent: " + player.RentDue();
 
-		totalText.text = "Total: " + (player.RentDue () + player.GetComponentInParent<Payroll> ().PayrollDue ());
+		totalText.text = "$" + (player.RentDue () + player.GetComponentInParent<Payroll> ().PayrollDue ());
 
 	}
 }

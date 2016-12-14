@@ -41,7 +41,7 @@ public class UIManager : MonoBehaviour {
 	}
 
 	void Update(){
-		funds.text = "Funds: $" + player.currentFunds;
+		funds.text = "$" + player.currentFunds;
 	}
 
 	public void SubtractBureaucrats(int count){
