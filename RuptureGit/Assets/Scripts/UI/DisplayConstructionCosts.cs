@@ -9,8 +9,6 @@ public class DisplayConstructionCosts : MonoBehaviour {
 	public GameObject officeCost;
 	public GameObject hireCost;
 	public GameObject networkCost;
-	public GameObject cursoryCost;
-	public GameObject thoroughCost;
 	public Text constructionCost;
 
 	Transform target;
@@ -92,9 +90,6 @@ public class DisplayConstructionCosts : MonoBehaviour {
 	
 	}
 
-	void DisplayCursoryCost(){
-		
-	}
 
 	Vector3 SetPositionOfCostDisplay(Transform target){
 		Vector3 screenPos = Camera.main.WorldToScreenPoint (target.position);

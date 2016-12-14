@@ -29,10 +29,6 @@ public class UIManager : MonoBehaviour {
 	[Header("Pay Time Text")]
 	public Text payTimeText;
 
-	[Header("Audio")]
-	public AudioClip investigateMode;
-	AudioSource canvasAudio;
-
 
 	PlayerController player;
 
@@ -178,7 +174,6 @@ public class UIManager : MonoBehaviour {
 		CloseInvestigateUI ();
 		player.playerState = PlayerController.State.Cursory;
 		SetGameModeText ("Cursory Investigation");
-		canvasAudio.PlayOneShot (investigateMode, 1);
 	}
 
 	//Austin added this method on 10/4/2016
@@ -186,8 +181,6 @@ public class UIManager : MonoBehaviour {
 		CloseInvestigateUI ();
 		player.playerState = PlayerController.State.Thorough;
 		SetGameModeText ("Thorough Investigation");
-		canvasAudio.PlayOneShot (investigateMode, 1);
-
 	}
 
 	public void SetGameModeText(string mode){
