@@ -74,15 +74,15 @@ public class CorruptionBehavior : MonoBehaviour {
 			Debug.Log ("there are " + nonCorruptNodes.Count + " noncorrupt nodes");
 
 			if (nonCorruptNodes.Count > 0) {
-				for (int i = 0; i <= 3; i++){
+				for (int i = 0; i <= 2; i++){
 					if (nonCorruptNodes [i] != null && nonCorruptNodes [i].GetComponent<Node> ().observableNodes.Count <= 5) {
 						nonCorruptNodes [i].GetComponent<Node> ().nodeState = Node.NodeState.Corrupt;
 						player.currentFunds -= (player.currentFunds / 20);
-						nonCorruptNodes [i].GetComponent<Node> ().illicitFunds += (player.currentFunds / 20);
+						nonCorruptNodes [i].GetComponent<Node> ().illicitFunds += (player.currentFunds / 15);
 					} else if (nonCorruptNodes [i] != null && nonCorruptNodes [i].GetComponent<Node> ().observableNodes.Count <= 7) {
 						nonCorruptNodes [i].GetComponent<Node> ().nodeState = Node.NodeState.Corrupt;
 						player.currentFunds -= (player.currentFunds / 20);
-						nonCorruptNodes [i].GetComponent<Node> ().illicitFunds += (player.currentFunds / 20);
+						nonCorruptNodes [i].GetComponent<Node> ().illicitFunds += (player.currentFunds / 15);
 					}
 
 					Debug.Log("New node corrupted");
