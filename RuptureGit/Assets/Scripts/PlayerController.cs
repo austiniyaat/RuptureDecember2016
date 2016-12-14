@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
+
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(UIManager))]
 
@@ -32,6 +33,11 @@ public class PlayerController : MonoBehaviour {
 
 	[Header("Office Placement")]
 	public GameObject office;
+	public GameObject office1;
+	public GameObject office2;
+	public GameObject office3;
+	public GameObject office4;
+	TreeInstance officeNumber;
 	public GameObject officeContainer;
 
 
@@ -57,6 +63,7 @@ public class PlayerController : MonoBehaviour {
 	public AudioClip networkAudio2;
 	AudioSource audiosource;
 
+
 	[HideInInspector]
 	public int currentFunds;
 	UIManager uiManager;
@@ -67,6 +74,7 @@ public class PlayerController : MonoBehaviour {
 		currentFunds = startingFunds;
 		rentTimer = 60;
 		audiosource = GetComponent<AudioSource> ();
+
 
 
 //		InvokeRepeating("PayTheRent", 90, 90);
@@ -83,6 +91,19 @@ public class PlayerController : MonoBehaviour {
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		Plane groundPlane = new Plane(Vector3.up, Vector3.zero );
 		float rayDistance;
+
+		// ramdom officeskin
+
+		float officeNumber = Random.Range (0, 3);
+
+		if (officeNumber <= 1) {
+			office = office1;
+		} else if (officeNumber > 1 && officeNumber <= 2) {
+			office = office3;
+		} else if (officeNumber > 2 && officeNumber <=3) {
+			office = office4;
+		}
+			
 
 		if (groundPlane.Raycast(ray, out rayDistance)){
 			Vector3 point = ray.GetPoint(rayDistance);
@@ -135,10 +156,10 @@ public class PlayerController : MonoBehaviour {
 //			Vector3 position4 = new Vector3 (Vector3.back * 1 + Vector3.up * 0.125f);
 
 			//creates four small spheres that check to see if the places Bureaucrats might be placed in are occupied
-			hitColliders1 = Physics.OverlapSphere ((office.transform.position + Vector3.forward * 1.2f + Vector3.up * 0.125f), 0.1f, nodeLayer);
-			hitColliders2 = Physics.OverlapSphere ((office.transform.position + Vector3.left * 1.2f+ Vector3.up * 0.125f), 0.1f, nodeLayer);
-			hitColliders3 = Physics.OverlapSphere ((office.transform.position + Vector3.right * 1.2f + Vector3.up * 0.125f), 0.1f, nodeLayer);
-			hitColliders4 = Physics.OverlapSphere ((office.transform.position + Vector3.back * 1.2f + Vector3.up * 0.125f), 0.1f, nodeLayer);
+			hitColliders1 = Physics.OverlapSphere ((office.transform.position + Vector3.forward * 0.8f + Vector3.up * 0.125f), 0.1f, nodeLayer);
+			hitColliders2 = Physics.OverlapSphere ((office.transform.position + Vector3.left * 0.8f+ Vector3.up * 0.125f), 0.1f, nodeLayer);
+			hitColliders3 = Physics.OverlapSphere ((office.transform.position + Vector3.right * 0.8f + Vector3.up * 0.125f), 0.1f, nodeLayer);
+			hitColliders4 = Physics.OverlapSphere ((office.transform.position + Vector3.back * 0.8f + Vector3.up * 0.125f), 0.1f, nodeLayer);
 
 
 			if (office.officeCount < maxPerOffice){
@@ -162,19 +183,19 @@ public class PlayerController : MonoBehaviour {
 
 
 				if (hitColliders1.Length == 0) {
-					currentBureaucrat.transform.position = office.transform.position + Vector3.forward * 1.2f + Vector3.up * 0.125f;
+					currentBureaucrat.transform.position = office.transform.position + Vector3.forward * 0.8f + Vector3.up * 0.125f;
 //					currentBureaucrat.GetComponent<Node>().selfIndex = 0;
 
 				} else if (hitColliders2.Length == 0) {
-					currentBureaucrat.transform.position = office.transform.position + Vector3.left * 1.2f + Vector3.up * 0.125f;
+					currentBureaucrat.transform.position = office.transform.position + Vector3.left * 0.8f + Vector3.up * 0.125f;
 //					currentBureaucrat.GetComponent<Node>().selfIndex = 1;
 
 				} else if (hitColliders3.Length == 0) {
-					currentBureaucrat.transform.position = office.transform.position + Vector3.right * 1.2f + Vector3.up * 0.125f;
+					currentBureaucrat.transform.position = office.transform.position + Vector3.right * 0.8f + Vector3.up * 0.125f;
 //					currentBureaucrat.GetComponent<Node>().selfIndex = 2;
 
 				} else if (hitColliders4.Length == 0) {
-					currentBureaucrat.transform.position = office.transform.position + Vector3.back * 1.2f + Vector3.up * 0.125f;
+					currentBureaucrat.transform.position = office.transform.position + Vector3.back * 0.8f + Vector3.up * 0.125f;
 //					currentBureaucrat.GetComponent<Node>().selfIndex = 3;
 
 				} 
@@ -279,6 +300,7 @@ public class PlayerController : MonoBehaviour {
 
 					currentFunds -= networkCost;
 					audiosource.PlayOneShot (networkAudio2, 1);
+
 
 					foreach(GameObject node in allNodes){
 						node.GetComponent<Node>().UpdateWitnessableNodes();
