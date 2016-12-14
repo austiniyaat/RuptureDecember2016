@@ -91,5 +91,6 @@ public class Office : MonoBehaviour {
 		supervisor = officeMembers[0];
 		supervisor.isSupervisor = true;
 		supervisor.gameObject.GetComponent<MeshRenderer>().material.color = Color.blue;
+		supervisor.gameObject.transform.FindChild("DESK").GetComponent<MeshRenderer>().material.color = Color.blue;
 	}
 }

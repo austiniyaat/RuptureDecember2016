@@ -24,27 +24,28 @@ public class DevMode : MonoBehaviour {
 		if (devModeActivated) {
 			foreach (GameObject bureaucrat in player.allNodes) {
 				Node node = bureaucrat.GetComponent<Node> ();
-				Color bureaucratColor = bureaucrat.GetComponent<MeshRenderer> ().material.color;
+//				GameObject bureaucratDesk = transform.FindChild ("DESK").gameObject;
+				Color bureaucratColor = bureaucrat.transform.FindChild ("DESK").GetComponent<MeshRenderer> ().material.color;
 
 				if (node.nodeState == Node.NodeState.Witness) {
 					bureaucratColor = Color.green;
-					node.gameObject.GetComponent<MeshRenderer> ().material.color = bureaucratColor;
+					node.gameObject.transform.FindChild ("DESK").GetComponent<MeshRenderer> ().material.color = bureaucratColor;
 				}
 
 				if (node.nodeState == Node.NodeState.Corrupt) {
 					bureaucratColor = Color.red;
-					node.gameObject.GetComponent<MeshRenderer> ().material.color = bureaucratColor;
+					node.gameObject.transform.FindChild ("DESK").GetComponent<MeshRenderer> ().material.color = bureaucratColor;
 				}
 				if (node.nodeState == Node.NodeState.Whistleblower) {
 					bureaucratColor = Color.yellow;
-					node.gameObject.GetComponent<MeshRenderer> ().material.color = bureaucratColor;
+					node.gameObject.transform.FindChild ("DESK").GetComponent<MeshRenderer> ().material.color = bureaucratColor;
 				}
 			}
 		} else {
 			foreach (GameObject bureaucrat in player.allNodes) {
 				bureaucrat.GetComponent<MeshRenderer> ().material.color = defaultColor;
 				if (bureaucrat.GetComponent<Node> ().isSupervisor) {
-					bureaucrat.GetComponent<MeshRenderer> ().material.color = Color.blue;
+					bureaucrat.transform.FindChild ("DESK").GetComponent<MeshRenderer> ().material.color; = Color.blue;
 				}
 			}
 		}
